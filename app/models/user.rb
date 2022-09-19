@@ -21,13 +21,13 @@ class User < Primary
     Rails.logger.info("Transaction succeeded!")
   end
 
-  def money_transfer sender, receiver, amount
+  def self.money_transfer sender, receiver, amount
     Transfer.transaction do
       Transfer.create!(sender: sender, receiver: receiver, amount: amount)
       sender.money = sender.money - amount
       receiver.money = receiver.money + amount
-      sender.save!
       receiver.save!
+      sender.save!
     end
   end
 

@@ -9,8 +9,8 @@ require 'faker'
 
 count = 1
 30.times do
-  name = Faker::Name.first_name
+  name = Faker::Name.name
   email = "user-" + count.to_s + "@gmail.com"
-  money = rand(1000000..50000000)
+  money = 5000000
   User.create!(name: name, email: email, money: money)
 end
